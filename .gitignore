@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 
+#intellij workspace folder
+.idea/*
 # Log file
 *.log
 
