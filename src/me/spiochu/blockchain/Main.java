@@ -1,12 +1,23 @@
 package me.spiochu.blockchain;
 
+import me.spiochu.blockchain.BlockChainCore.Block;
+import me.spiochu.blockchain.BlockChainCore.Blockchain;
+import me.spiochu.blockchain.BlockChainCore.Data;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Block genesisBlock = new Block("0",new ArrayList<Data>());
-        Blockchain blockchain = new Blockchain(genesisBlock);
+        Blockchain blockchain = new Blockchain();
+        List<Data> dataList = new ArrayList<>();
+        Data data = new Data("Tomek","Damian","Hello");
+        dataList.add(data);
+        blockchain.addBlock(dataList);
+        blockchain.addBlock(dataList);
+        blockchain.addBlock(dataList);
+        blockchain.addBlock(dataList);
 
     }
 }

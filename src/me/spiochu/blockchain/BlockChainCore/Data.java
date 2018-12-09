@@ -1,4 +1,4 @@
-package me.spiochu.blockchain;
+package me.spiochu.blockchain.BlockChainCore;
 
 public class Data {
     private String sender;
@@ -21,5 +21,14 @@ public class Data {
 
     public String getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "sender='" + sender + '\'' +
+                ", reciver='" + reciver + '\'' +
+                ", data='" + data + '\'' +
+                '}';
     }
 }
