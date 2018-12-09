@@ -1,22 +1,26 @@
 package me.spiochu.blockchain.BlockChainCore;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+
 public class Data {
     private String sender;
-    private String reciver;
+    private String receiver;
     private String data;
 
-    public Data(String sender, String reciver, String data) {
+    public Data(String sender, String receiver, String data) {
         this.sender = sender;
-        this.reciver = reciver;
-        this.data = data;
+        this.receiver = receiver;
+        this.data = Base64.getEncoder().encodeToString(data.getBytes());
+
     }
 
     public String getSender() {
         return sender;
     }
 
-    public String getReciver() {
-        return reciver;
+    public String getReceiver() {
+        return receiver;
     }
 
     public String getData() {
@@ -26,9 +30,9 @@ public class Data {
     @Override
     public String toString() {
         return "Data{" +
-                "sender='" + sender + '\'' +
-                ", reciver='" + reciver + '\'' +
-                ", data='" + data + '\'' +
+                  sender + ':' +
+                  receiver + ':' +
+                  data +
                 '}';
     }
 }

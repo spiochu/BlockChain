@@ -1,20 +1,25 @@
 package me.spiochu.blockchain.BlockChainCore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Blockchain {
-    private List<Block> blockchain = new ArrayList<>();
+public class Blockchain implements Serializable {
+    private ArrayList<Block> blockchain = new ArrayList<>();
 
     //constructor generate genesis block
-    public Blockchain() {
+    public Blockchain(boolean withGenesisBlock) {
+        if (withGenesisBlock)
         createGenesisBlock();
     }
 
     //creating block using data and add it to blockchain
-    public void addBlock(List<Data> data){
+    public void addBlock(ArrayList<Data> data){
         Block temp = getLastBlock();
         this.blockchain.add(new Block(temp.getIndex()+1,temp.getHash(),data));
+    }
+    public void addBlock(String data){
+        this.blockchain.add(new Block(data));
     }
 
     //creating genesis block
