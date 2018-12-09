@@ -8,24 +8,27 @@ public class Block {
     private int index;
     private long timestamp;
     private String hash;
-    private String previusHash;
+    private String previousHash;
     private List<Data> dataList;
 
 
-    public Block(int index,String previusHash, List<Data> dataList) {
+    //constructor creating a block using index, hash of previous block and list of data
+    public Block(int index,String previousHash, List<Data> dataList) {
         this.index = index;
-        this.previusHash = previusHash;
+        this.previousHash = previousHash;
         this.dataList = dataList;
         this.timestamp = System.currentTimeMillis();
         this.hash = generateHash();
     }
 
+    //return index of block
     public int getIndex() {
         return index;
     }
 
+    //generating hash od block using index, timestamp, list of data
     private String generateHash() {
-            String data = index + timestamp + previusHash;
+            String data = index + timestamp + previousHash;
             for (Data d:dataList
             ) {
                 data += d.toString();
@@ -50,7 +53,24 @@ public class Block {
             return String.valueOf(hexString);
     }
 
+    //return a hash of previous block
+    public String getPreviousHash() {
+        return previousHash;
+    }
+
+    //return a hash of block
     public String getHash() {
-        return hash;
+        return generateHash();
+    }
+
+    @Override
+    public String toString() {
+        return "Block{" +
+                "index=" + index +
+                ", timestamp=" + timestamp +
+                ", hash='" + hash + '\'' +
+                ", previousHash='" + previousHash + '\'' +
+                ", dataList=" + dataList +
+                '}';
     }
 }
