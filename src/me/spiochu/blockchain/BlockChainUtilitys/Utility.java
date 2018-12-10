@@ -2,8 +2,10 @@ package me.spiochu.blockchain.BlockChainUtilitys;
 
 import me.spiochu.blockchain.BlockChainCore.Block;
 import me.spiochu.blockchain.BlockChainCore.Blockchain;
+import me.spiochu.blockchain.BlockChainCore.Data;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Utility {
     private Blockchain blockchain;
@@ -36,7 +38,7 @@ public class Utility {
 
     public boolean saveBlockchainToFile(String fileName) {
         System.out.println("Writing a block to file...");
-        try (FileWriter fileWriter = new FileWriter(fileName, true);
+        try (FileWriter fileWriter = new FileWriter(fileName);
                  BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                  PrintWriter out = new PrintWriter(bufferedWriter)) {
 
@@ -76,5 +78,13 @@ public class Utility {
         return true;
     }
 
+    public void addBlock(ArrayList<Data> data) {
+        this.blockchain.addBlock(data);
+    }
+
+    public void printLastBlock() {
+        Block lastBlock = this.blockchain.getLastBlock();
+        System.out.println(lastBlock);
+    }
 }
 
